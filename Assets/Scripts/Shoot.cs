@@ -8,36 +8,41 @@ public class Shoot : MonoBehaviour
     public float range = 50.0f;
 
     public Camera cam;
-    // Start is called before the first frame update
+
+    public ParticleSystem plazmLaser;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.visible = false; //скрываем указатель мыши
+        plazmLaser.Stop();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
         {
+            plazmLaser.Play();
             Vector3 point = new Vector3(cam.pixelWidth / 2, cam.pixelHeight / 2, 0);
-            Ray ray = cam.ScreenPointToRay(point);
             RaycastHit hit;
-            if(Physics.Raycast(ray, out hit, range))
+            Ray ray = cam.ScreenPointToRay(point); //Создание луча методом ScreenPointToRay().
+            if (Physics.Raycast(ray, out hit ,range))
             {
                 Debug.Log(hit.transform.name);
 
-                Strength objectCube = hit.transform.GetComponent<Strength>();
-                objectCube.Damage(damage);
-
+                Strength objectVase = hit.transform.GetComponent<Strength>();
+                if (objectVase != null)
+                {
+                    objectVase.Damage(damage);
+                }
             }
         }
     }
 
-    private void OnGUI()
+    void OnGUI()
     {
         float posX = cam.pixelWidth / 2;
         float posY = cam.pixelHeight / 2;
-        GUI.Label(new Rect(posX, posY, 12, 12), "*");
+        GUI.Label(new Rect(posX, posY, 12, 12), "*");//команда GUI.Label() отображает символ *
     }
 }
