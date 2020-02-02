@@ -35,6 +35,12 @@ public class Shoot : MonoBehaviour
                 {
                     objectVase.Damage(damage);
                 }
+
+                DieEnemy enemy = hit.transform.GetComponent<DieEnemy>();
+                if(enemy != null)
+                {
+                    enemy.ReactToHit();
+                }
             }
         }
     }

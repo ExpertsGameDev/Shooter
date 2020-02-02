@@ -6,8 +6,20 @@ public class DieEnemy : MonoBehaviour
 {
     public void ReactToHit()
     {//метод, вызванный сценарием стрельбы
-        //StartCoroutine(Die()); //вызываем сопрограмму Die()
+        AIEnemy behaviour = GetComponent<AIEnemy>();
+        if(behaviour != null)
+        {
+            behaviour.SetActive(false);
+        }
+        StartCoroutine(Die()); //вызываем сопрограмму Die()
     }
 
+
+    private IEnumerator Die()
+    {
+        GetComponent<MeshRenderer>().material.color = Color.red;
+        yield return new WaitForSeconds(1.5f);
+        Destroy(this.gameObject);
+    }
 
 }
