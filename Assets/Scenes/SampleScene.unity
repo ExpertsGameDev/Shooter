@@ -6674,8 +6674,8 @@ GameObject:
   - component: {fileID: 1131604933}
   - component: {fileID: 1131604932}
   - component: {fileID: 1131604934}
-  - component: {fileID: 1131604935}
   - component: {fileID: 1131604936}
+  - component: {fileID: 1131604935}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -6811,7 +6811,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1131604927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f3e6cb9aa0354d11b55cc367c2f36c2, type: 3}
+  m_Script: {fileID: 11500000, guid: bb0d23674301b45d3a26676791e2972d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1131604936
@@ -7037,6 +7037,7 @@ MonoBehaviour:
   minDistance: 1
   distance: 0
   target: {fileID: 1131604931}
+  player: {fileID: 1131604935}
 --- !u!4 &1303843439 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 481322, guid: 243f4abba039a1846ad345848e88725c,

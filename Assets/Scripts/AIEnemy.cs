@@ -5,11 +5,12 @@ using UnityEngine;
 public class AIEnemy : MonoBehaviour
 {
     public float speed = 1.0f;
-    public float damage = 2.0f;
+    public int damage = 2;
     public float maxDistance = 10.0f;
     public float minDistance = 1.0f;
     public float distance;
     public Transform target;
+    public PlayerCharacter player;
 
     // Update is called once per frame
     void Update()
@@ -23,6 +24,10 @@ public class AIEnemy : MonoBehaviour
         {
             transform.rotation = Quaternion.Slerp(transform.localRotation, Quaternion.LookRotation(target.position - transform.position), speed * Time.deltaTime);
             transform.position = Vector3.Lerp(transform.position, target.position, speed * Time.deltaTime);
-        }  
+        }
+        if (distance < minDistance)
+        {
+            player.Hurt(damage);
+        }
     }
 }
